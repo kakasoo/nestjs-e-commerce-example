@@ -5,9 +5,13 @@ import { AppController } from './controllers/app.controller';
 import { AppService } from './providers/app.service';
 import { HttpExceptionFilter } from './common/filters/http-exception.fiter';
 import { TimeoutInterceptor } from './common/interceptors/timout.interceptor';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ThrottlerModule.forRoot({ ttl: 60, limit: 10 })],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot({ ttl: 60, limit: 10 }),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
