@@ -22,12 +22,16 @@
     "nestia": "npx nestia sdk \"src/controllers\" --out \"src/api\""
   },
   "dependencies": {
-    "@nestjs/common": "^7.6.13",
-    "@nestjs/core": "^7.6.13",
+    "@nestjs/common": "^8.2.6",
+    "@nestjs/core": "^8.2.6",
     "@nestjs/platform-express": "^7.6.13",
+    "@nestjs/swagger": "^5.2.0",
+    "@nestjs/throttler": "^2.0.0",
+    "nestia-fetcher": "^1.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6"
+    "rxjs": "^7.5.2",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",
