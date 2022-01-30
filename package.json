@@ -21,7 +21,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "nestia": "npx nestia sdk \"src/controllers\" --out \"src/api\""
+    "nestia": "npx nestia sdk"
   },
   "dependencies": {
     "@nestjs/common": "^8.2.6",
@@ -30,11 +30,13 @@
     "@nestjs/swagger": "^5.2.0",
     "@nestjs/throttler": "^2.0.0",
     "cross-env": "^7.0.3",
+    "mysql2": "^2.3.3",
     "nestia-fetcher": "^1.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.2",
-    "swagger-ui-express": "^4.3.0"
+    "swagger-ui-express": "^4.3.0",
+    "typeorm": "^0.2.41"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",
