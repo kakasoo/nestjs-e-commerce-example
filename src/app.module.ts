@@ -6,9 +6,12 @@ import { AppService } from './providers/app.service';
 import { HttpExceptionFilter } from './common/filters/http-exception.fiter';
 import { TimeoutInterceptor } from './common/interceptors/timout.interceptor';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModuleOptions } from './config/typeorm';
 
 @Module({
   imports: [
+    TypeOrmModule.forRootAsync(TypeOrmModuleOptions),
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot({ ttl: 60, limit: 10 }),
   ],
