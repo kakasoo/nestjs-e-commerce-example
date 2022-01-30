@@ -5,6 +5,10 @@ import { SwaggerSetting } from './config/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   SwaggerSetting(app);
-  await app.listen(3000);
+  await app.listen(3000, () => {
+    if (process.env.NODE_ENV === 'production') {
+      process.send('ready');
+    }
+  });
 }
 bootstrap();
