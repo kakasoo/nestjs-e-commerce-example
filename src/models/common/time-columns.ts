@@ -2,11 +2,11 @@ import { CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
 
 export abstract class TimeColumns {
   @CreateDateColumn()
-  createdAt: Date;
+  public readonly createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  public readonly updatedAt!: Date;
 
   @DeleteDateColumn()
-  deletedAt: Date;
+  public readonly deletedAt!: Date;
 }

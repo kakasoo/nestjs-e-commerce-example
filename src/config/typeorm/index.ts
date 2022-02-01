@@ -1,4 +1,5 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import * as path from 'path';
 
 export const TypeOrmModuleOptions = {
   imports: [ConfigModule],
@@ -13,7 +14,10 @@ export const TypeOrmModuleOptions = {
       username: configService.get(`${NODE_ENV}_DB_USERNAME`),
       database: configService.get(`${NODE_ENV}_DB_DATABASE`),
       password: configService.get(`${NODE_ENV}_DB_PASSWORD`),
-      entities: [__dirname + '../../**/*.entity{.ts,.js}'],
+      entities: [
+        path.join(__dirname, '../../models/tables/*.ts'),
+        path.join(__dirname, '../../models/tables/*.js'),
+      ],
       synchronize: false,
 
       ...(NODE_ENV === 'DEVELOPMENT'

@@ -23,7 +23,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "nestia": "npx nestia sdk",
     "schema:drop": "cross-env NODE_ENV=DEVELOPMENT ts-node ./node_modules/typeorm/cli.js schema:drop",
-    "schema:sync": "cross-env NODE_ENV=DEVELOPMENT ts-node ./node_modules/typeorm/cli.js schema:sync"
+    "schema:sync": "cross-env NODE_ENV=DEVELOPMENT ts-node ./node_modules/typeorm/cli.js schema:sync",
+    "build:api": "rimraf packages/api/lib && npx nestia sdk && tsc -p tsconfig.api.json",
+    "build:models": "rimraf packages/models/lib && tsc -p tsconfig.models.json",
+    "package:api": "npm run build:api && cd packages/api && npm publish",
+    "package:models": "npm run build:models && cd packages/models && npm publish"
   },
   "dependencies": {
     "@nestjs/common": "^8.2.6",
