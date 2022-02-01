@@ -5,7 +5,6 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 
-@Entity()
 export abstract class TimeColumns {
   @CreateDateColumn()
   createdAt: Date;
