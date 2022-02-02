@@ -5,6 +5,7 @@ import { User } from '../models/tables/user';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
+import { KakaoStrategy } from './strategies/kakao.strategy';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { AuthService } from './auth.service';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [AuthService],
+  providers: [AuthService, KakaoStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
