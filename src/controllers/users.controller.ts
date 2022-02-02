@@ -5,10 +5,14 @@ import { UsersService } from '../providers/users.service';
 import { KaKaoGuard } from '../auth/guards/kakao.guard';
 import { User } from '../common/decorators/user.decorator';
 import { Profile } from 'passport-kakao';
+import { AuthService } from '../auth/auth.service';
 
 @Controller('api/users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @Post('sign-up')
   async signUp(@Body() dto: CreateUserDto): Promise<UserEntity> {
@@ -21,13 +25,12 @@ export class UsersController {
 
   @UseGuards(KaKaoGuard)
   @Get('kakao/callback')
-  async kakaoCallback(@User() profile: Profile) {
+  async kakaoCallback(@User() profile: Profile): Promise<{ token: string }> {
     const { id: oauthId, username: name } = profile;
-    const user = await this.usersService.findOne({ oauthId, name });
-
+    let user = await this.usersService.findOne({ oauthId, name });
     if (!user) {
-      return await this.usersService.create({ oauthId, name });
+      user = await this.usersService.create({ oauthId, name });
     }
-    return user;
+    return this.authService.userLogin(user);
   }
 }

@@ -24,8 +24,8 @@ export class AuthService {
     return user;
   }
 
-  async userLogin(user: User) {
-    const xauth = this.jwtService.sign({ id: user.id });
-    return { xauth };
+  userLogin(user: User) {
+    const token = this.jwtService.sign({ id: user.id });
+    return { token };
   }
 }
