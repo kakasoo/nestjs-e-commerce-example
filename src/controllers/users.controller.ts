@@ -22,6 +22,12 @@ export class UsersController {
   @UseGuards(KaKaoGuard)
   @Get('kakao/callback')
   async kakaoCallback(@User() profile: Profile) {
-    const { id, username } = profile;
+    const { id: oauthId, username: name } = profile;
+    const user = await this.usersService.findOne({ oauthId, name });
+
+    if (!user) {
+      return await this.usersService.create({ oauthId, name });
+    }
+    return user;
   }
 }
