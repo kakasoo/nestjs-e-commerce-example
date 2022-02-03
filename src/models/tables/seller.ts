@@ -19,7 +19,7 @@ export class Seller extends TimeColumns {
   @Column('varchar', { select: false })
   public password!: string;
 
-  @Column('varchar', { select: true })
+  @Column('varchar')
   public name!: string;
 
   @Column('varchar', { nullable: true, select: false })
@@ -34,16 +34,16 @@ export class Seller extends TimeColumns {
   @Column('varchar', { nullable: true, unique: true, select: false })
   public email!: string;
 
-  @Column('varchar', { select: true, comment: '사업장 명' })
+  @Column('varchar', { comment: '사업장 명' })
   public shopName!: string;
 
-  @Column('int', { select: true, default: 0, comment: '기본 배송비' })
+  @Column('int', { default: 0, comment: '기본 배송비' })
   public basicFee!: number;
 
-  @Column('int', { select: true, default: 0, comment: '도서 산간 지방 배송비' })
+  @Column('int', { default: 0, comment: '도서 산간 지방 배송비' })
   public exceptionFee: number;
 
-  @Column('int', { select: true, default: 0, comment: '배송비 무료 기준 금액' })
+  @Column('int', { default: 0, comment: '배송비 무료 기준 금액' })
   public baseFee: number;
 
   @Column('varchar', { select: false, comment: '사업장 명' })

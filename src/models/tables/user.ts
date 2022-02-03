@@ -12,7 +12,7 @@ export class User extends TimeColumns {
   @Column('varchar', { nullable: false, select: false })
   public name!: string;
 
-  @Column('varchar', { select: true })
+  @Column('varchar')
   public nickname!: string;
 
   @Column('varchar', { select: false })
