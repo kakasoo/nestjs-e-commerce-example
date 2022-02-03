@@ -14,22 +14,22 @@ export class Product extends TimeColumns {
   @PrimaryGeneratedColumn()
   public readonly id: number;
 
-  @Column('int', { nullable: false, select: true })
+  @Column('int', { nullable: false, select: true, comment: '판매자 ID' })
   public sellerId: number;
 
-  @Column('varchar', { nullable: false, select: true })
+  @Column('varchar', { nullable: false, select: true, comment: '상품 이름' })
   public title: string;
 
-  @Column('varchar', { nullable: true, select: true })
+  @Column('varchar', { nullable: true, select: true, comment: '상품 설명' })
   public description: string;
 
-  @Column('varchar', { nullable: true, select: true, comment: '상품 안내' })
+  @Column('varchar', { nullable: true, select: true, comment: '안내 문구' })
   public guide: string;
 
-  @Column('int', { nullable: false, select: true })
+  @Column('int', { nullable: false, select: true, comment: '원가' })
   public originalPrice: number;
 
-  @Column('int', { nullable: false, select: true })
+  @Column('int', { nullable: false, select: true, comment: '판매가' })
   public salesPrice: number;
 
   @Column('int', { nullable: false, select: true, comment: '출고 소요 일자' })

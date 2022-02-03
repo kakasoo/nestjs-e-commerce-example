@@ -12,30 +12,42 @@ export class User extends TimeColumns {
   @Column('varchar', { nullable: false, select: false })
   public name!: string;
 
-  @Column('varchar', { nullable: true, select: true })
+  @Column('varchar', { select: true })
   public nickname!: string;
 
-  @Column('varchar', { nullable: true, select: false })
+  @Column('varchar', { select: false })
   public profileImage!: string;
 
-  @Column('varchar', { nullable: true, unique: true, select: false })
+  @Column('varchar', { unique: true, select: false })
   public phoneNumber!: string;
 
-  @Column('varchar', { nullable: true, unique: true, select: false })
+  @Column('varchar', { unique: true, select: false })
   public email!: string;
 
-  @Column('datetime', { nullable: true, select: false })
+  @Column('datetime', { select: false })
   public birth!: string;
 
-  @Column('tinyint', { width: 1, nullable: true, select: false })
+  @Column('tinyint', { width: 1, select: false })
   public gender!: number;
 
-  @Column('int', { nullable: true, select: false })
+  @Column('int', { select: false, comment: '마일리지 잔여금' })
   public mileage!: number;
 
-  @Column('tinyint', { width: 1, nullable: false, select: false, default: 0 })
+  @Column('tinyint', {
+    width: 1,
+    nullable: false,
+    select: false,
+    default: 0,
+    comment: 'sms 광고 수신 동의',
+  })
   public smsAdsConsent!: boolean;
 
-  @Column('tinyint', { width: 1, nullable: false, select: false, default: 0 })
+  @Column('tinyint', {
+    width: 1,
+    nullable: false,
+    select: false,
+    default: 0,
+    comment: 'email 광고 수신 동의',
+  })
   public emailAdsConsent!: boolean;
 }
