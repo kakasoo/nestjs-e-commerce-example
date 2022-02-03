@@ -13,7 +13,7 @@ email : kscodebase@gmail.com
 3. 아래 명령어로 tables를 MySQL 상에 synchronize.
 
    ```bash
-   $ npm run schema:sync # 정의된 entity들을
+   $ npm run schema:sync # 정의된 entity들을 즉시 생성합니다.
    ```
 
 4. 서버 실행 후 F.E. 에 자유롭게 연동

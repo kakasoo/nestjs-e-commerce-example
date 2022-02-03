@@ -7,35 +7,35 @@ export class User extends TimeColumns {
   public readonly id!: number;
 
   @Column('varchar', { nullable: false, unique: true, select: false })
-  public readonly oauthId!: string;
+  public oauthId!: string;
 
-  @Column('varchar', { nullable: false, select: true })
-  public readonly name!: string;
+  @Column('varchar', { nullable: false, select: false })
+  public name!: string;
+
+  @Column('varchar', { nullable: true, select: true })
+  public nickname!: string;
 
   @Column('varchar', { nullable: true, select: false })
-  public readonly nickname!: string;
-
-  @Column('varchar', { nullable: true, select: false })
-  public readonly profileImage!: string;
+  public profileImage!: string;
 
   @Column('varchar', { nullable: true, unique: true, select: false })
-  public readonly phoneNumber!: string;
+  public phoneNumber!: string;
 
   @Column('varchar', { nullable: true, unique: true, select: false })
-  public readonly email!: string;
+  public email!: string;
 
   @Column('datetime', { nullable: true, select: false })
-  public readonly birth!: string;
+  public birth!: string;
 
   @Column('tinyint', { width: 1, nullable: true, select: false })
-  public readonly gender!: number;
+  public gender!: number;
 
   @Column('int', { nullable: true, select: false })
-  public readonly mileage!: number;
+  public mileage!: number;
 
   @Column('tinyint', { width: 1, nullable: false, select: false, default: 0 })
-  public readonly smsAdsConsent!: boolean;
+  public smsAdsConsent!: boolean;
 
   @Column('tinyint', { width: 1, nullable: false, select: false, default: 0 })
-  public readonly emailAdsConsent!: boolean;
+  public emailAdsConsent!: boolean;
 }
