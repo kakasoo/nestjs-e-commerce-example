@@ -1,9 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import { TimeColumns } from '../common/time-columns';
+import { Product } from './product';
 
 @Entity()
 export class Seller extends TimeColumns {
-  @PrimaryGeneratedColumn({ type: 'int' })
+  @PrimaryGeneratedColumn()
   public readonly id!: number;
 
   @Column('varchar', { nullable: false, unique: true, select: false })
@@ -50,4 +57,8 @@ export class Seller extends TimeColumns {
 
   @Column('varchar', { nullable: false, select: false })
   public businessNumber!: string;
+
+  @OneToMany((Type) => Product, (product) => product.seller)
+  @JoinColumn({ name: 'sellerId', referencedColumnName: 'id' })
+  products: Product[];
 }

@@ -3,7 +3,7 @@ import { TimeColumns } from '../common/time-columns';
 
 @Entity()
 export class User extends TimeColumns {
-  @PrimaryGeneratedColumn({ type: 'int' })
+  @PrimaryGeneratedColumn()
   public readonly id!: number;
 
   @Column('varchar', { nullable: false, unique: true, select: false })
