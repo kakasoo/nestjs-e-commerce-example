@@ -5,10 +5,12 @@ import {
   ManyToOne,
   Index,
   OneToMany,
-  JoinColumn,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { TimeColumns } from '../common/time-columns';
 import { BodyImage } from './bodyImage';
+import { Category } from './category';
 import { HeaderImage } from './headerImage';
 import { Seller } from './seller';
 
@@ -53,4 +55,12 @@ export class Product extends TimeColumns {
 
   @OneToMany(() => BodyImage, (image) => image.product)
   bodies: BodyImage[];
+
+  @ManyToMany(() => Category, (category) => category.products)
+  @JoinTable({
+    name: 'product_has_categories',
+    joinColumn: { name: 'productId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'categoryId', referencedColumnName: 'id' },
+  })
+  categories: Category[];
 }

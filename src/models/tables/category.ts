@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 import { TimeColumns } from '../common/time-columns';
+import { Product } from './product';
 
 @Entity()
 export class Category extends TimeColumns {
@@ -8,4 +9,7 @@ export class Category extends TimeColumns {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Product, (product) => product.categories)
+  products: Product[];
 }
