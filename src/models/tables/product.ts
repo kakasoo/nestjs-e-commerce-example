@@ -8,6 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { TimeColumns } from '../common/time-columns';
+import { BodyImage } from './bodyImage';
 import { HeaderImage } from './headerImage';
 import { Seller } from './seller';
 
@@ -49,4 +50,7 @@ export class Product extends TimeColumns {
 
   @OneToMany(() => HeaderImage, (image) => image.product)
   headers: HeaderImage[];
+
+  @OneToMany(() => BodyImage, (image) => image.product)
+  bodies: BodyImage[];
 }
