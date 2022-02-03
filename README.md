@@ -13,6 +13,7 @@ email : kscodebase@gmail.com
 3. 아래 명령어로 tables를 MySQL 상에 synchronize.
 
    ```bash
+   $ npm install # 필요한 node package module을 install 합니다.
    $ npm run schema:sync # 정의된 entity들을 즉시 생성합니다.
    ```
 
