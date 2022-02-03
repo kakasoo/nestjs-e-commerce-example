@@ -37,7 +37,7 @@ export class User extends TimeColumns {
     width: 1,
     nullable: false,
     select: false,
-    default: 0,
+    default: false,
     comment: 'sms 광고 수신 동의',
   })
   public smsAdsConsent!: boolean;
@@ -46,7 +46,7 @@ export class User extends TimeColumns {
     width: 1,
     nullable: false,
     select: false,
-    default: 0,
+    default: false,
     comment: 'email 광고 수신 동의',
   })
   public emailAdsConsent!: boolean;
