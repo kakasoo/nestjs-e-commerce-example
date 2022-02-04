@@ -14,6 +14,7 @@ import { Category } from './category';
 import { HeaderImage } from './headerImage';
 import { OptionGroup } from './optionGroup';
 import { Seller } from './seller';
+import { User } from './user';
 
 @Index('FK__Product__Seller', ['sellerId'], {})
 @Entity()
@@ -67,4 +68,8 @@ export class Product extends TimeColumns {
 
   @OneToMany(() => OptionGroup, (group) => group.product)
   optionGroups: OptionGroup[];
+
+  @ManyToMany(() => User, (user) => user.products, { nullable: false })
+  @JoinTable({ name: 'user_like_product' })
+  users: User[];
 }

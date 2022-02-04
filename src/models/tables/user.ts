@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { TimeColumns } from '../common/time-columns';
+import { Product } from './product';
 
 @Entity()
 export class User extends TimeColumns {
@@ -50,4 +57,8 @@ export class User extends TimeColumns {
     comment: 'email 광고 수신 동의',
   })
   public emailAdsConsent!: boolean;
+
+  @ManyToMany(() => Product, (product) => product.users, { nullable: false })
+  @JoinTable({ name: 'user_like_product' })
+  products: Product[];
 }
