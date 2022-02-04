@@ -12,6 +12,7 @@ import { TimeColumns } from '../common/time-columns';
 import { BodyImage } from './bodyImage';
 import { Category } from './category';
 import { HeaderImage } from './headerImage';
+import { OptionGroup } from './optionGroup';
 import { Seller } from './seller';
 
 @Index('FK__Product__Seller', ['sellerId'], {})
@@ -63,4 +64,7 @@ export class Product extends TimeColumns {
     inverseJoinColumn: { name: 'categoryId', referencedColumnName: 'id' },
   })
   categories: Category[];
+
+  @OneToMany(() => OptionGroup, (group) => group.product)
+  optionGroups: OptionGroup[];
 }
