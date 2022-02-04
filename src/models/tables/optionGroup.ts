@@ -24,7 +24,7 @@ export class OptionGroup extends TimeColumns {
     width: 1,
     nullable: false,
     default: false,
-    comment: '필수 옵션 유무',
+    comment: '선택 옵션 유무',
   })
   public isOptional!: boolean;
 
