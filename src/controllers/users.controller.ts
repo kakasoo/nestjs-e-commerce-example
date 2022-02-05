@@ -7,8 +7,9 @@ import { User } from '../common/decorators/user.decorator';
 import { Profile } from 'passport-kakao';
 import { AuthService } from '../auth/auth.service';
 import { JwtGuard } from '../auth/guards/jwt.guard';
-import { ApiHeader } from '@nestjs/swagger';
+import { ApiHeader, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('유저 / User')
 @Controller('api/users')
 export class UsersController {
   constructor(
@@ -16,15 +17,18 @@ export class UsersController {
     private readonly usersService: UsersService,
   ) {}
 
-  @Post('sign-up')
-  async signUp(@Body() dto: CreateUserDto): Promise<UserEntity> {
-    return await this.usersService.create(dto);
-  }
+  // @ApiOperation({summary : 'MVP : Local 로그인을 위한 User 생성'})
+  // @Post('sign-up')
+  // async signUp(@Body() dto: CreateUserDto): Promise<UserEntity> {
+  //   return await this.usersService.create(dto);
+  // }
 
+  @ApiOperation({ summary: 'MVP : 카카오톡을 이용한 로그인' })
   @UseGuards(KaKaoGuard)
   @Get('kakao/sign-in')
   async kakaoSignIn() {}
 
+  @ApiOperation({ summary: 'MVP : 카카오톡 로그인 후 Redirect 되는 경로' })
   @UseGuards(KaKaoGuard)
   @Get('kakao/callback')
   async kakaoCallback(@User() profile: Profile): Promise<{ token: string }> {
@@ -36,6 +40,7 @@ export class UsersController {
     return this.authService.userLogin(user);
   }
 
+  @ApiOperation({ summary: 'MVP : 유저 프로필 조회 & 토큰에 담긴 값 Parsing.' })
   @ApiHeader({ name: 'token' })
   @UseGuards(JwtGuard)
   @Get('profile')
