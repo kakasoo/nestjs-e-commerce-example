@@ -10,11 +10,11 @@ export class UsersService {
     @InjectRepository(User) private readonly usersRepository: Repository<User>,
   ) {}
 
-  async create(dto: CreateUserDto) {
+  async create(dto: CreateUserDto): Promise<User> {
     return await this.usersRepository.save(dto);
   }
 
-  async findOne(condition: Partial<User>) {
+  async findOne(condition: Partial<User>): Promise<User> {
     const [user] = await this.usersRepository.find({
       select: [
         'id',
