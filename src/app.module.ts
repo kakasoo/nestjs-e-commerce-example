@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmModuleOptions } from './config/typeorm';
 import { UsersModule } from './modules/users.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoriesModule } from './modules/categories.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthModule } from './auth/auth.module';
     ThrottlerModule.forRoot({ ttl: 60, limit: 10 }),
     AuthModule,
     UsersModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [
