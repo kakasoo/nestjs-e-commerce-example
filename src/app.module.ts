@@ -10,6 +10,7 @@ import { UsersModule } from './modules/users.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './modules/categories.module';
 import { SellersModule } from './modules/sellers.module';
+import { ProductsModule } from './modules/products.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SellersModule } from './modules/sellers.module';
     UsersModule,
     CategoriesModule,
     SellersModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [
