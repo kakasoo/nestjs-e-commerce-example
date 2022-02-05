@@ -6,7 +6,7 @@ import { KaKaoGuard } from '../auth/guards/kakao.guard';
 import { User } from '../common/decorators/user.decorator';
 import { Profile } from 'passport-kakao';
 import { AuthService } from '../auth/auth.service';
-import { JwtGuard } from 'src/auth/guards/jwt.guard';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 import { ApiHeader } from '@nestjs/swagger';
 
 @Controller('api/users')
