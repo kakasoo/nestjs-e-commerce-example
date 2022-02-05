@@ -7,7 +7,7 @@ export class Category extends TimeColumns {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column('varchar', { nullable: false, unique: true })
   name: string;
 
   @ManyToMany(() => Product, (product) => product.categories)
