@@ -16,6 +16,19 @@ export class UsersService {
 
   async findOne(condition: Partial<User>) {
     const [user] = await this.usersRepository.find({
+      select: [
+        'id',
+        'name',
+        'nickname',
+        'profileImage',
+        'email',
+        'birth',
+        'gender',
+        'mileage',
+        'smsAdsConsent',
+        'emailAdsConsent',
+        'createdAt',
+      ],
       where: condition,
       take: 1,
     });

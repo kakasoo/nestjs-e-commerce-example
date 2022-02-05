@@ -7,7 +7,6 @@ import { User } from '../common/decorators/user.decorator';
 import { Profile } from 'passport-kakao';
 import { AuthService } from '../auth/auth.service';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { UserId } from 'src/common/decorators/user-id.decorator';
 import { ApiHeader } from '@nestjs/swagger';
 
 @Controller('api/users')
@@ -37,13 +36,10 @@ export class UsersController {
     return this.authService.userLogin(user);
   }
 
-  @ApiHeader({
-    name: 'token',
-  })
+  @ApiHeader({ name: 'token' })
   @UseGuards(JwtGuard)
   @Get('profile')
-  async getProfile(@UserId() userId: number) {
-    console.log('userId : ', userId);
-    return userId;
+  async getProfile(@User() user: UserEntity) {
+    return user;
   }
 }
