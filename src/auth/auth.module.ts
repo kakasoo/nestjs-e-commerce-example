@@ -6,6 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { KakaoStrategy } from './strategies/kakao.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { KakaoStrategy } from './strategies/kakao.strategy';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [AuthService, KakaoStrategy],
+  providers: [AuthService, KakaoStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
