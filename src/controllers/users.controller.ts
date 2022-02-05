@@ -29,7 +29,7 @@ export class UsersController {
     const { id: oauthId, username: name } = profile;
     let user = await this.usersService.findOne({ oauthId, name });
     if (!user) {
-      user = await this.usersService.create({ oauthId, name });
+      user = await this.usersService.create({ oauthId, name, nickname: name });
     }
     return this.authService.userLogin(user);
   }

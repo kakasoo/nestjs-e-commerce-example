@@ -22,22 +22,27 @@ export class User extends TimeColumns {
   @Column('varchar')
   public nickname!: string;
 
-  @Column('varchar', { select: false })
+  @Column('varchar', { nullable: true, select: false })
   public profileImage!: string;
 
-  @Column('varchar', { unique: true, select: false })
+  @Column('varchar', { nullable: true, unique: true, select: false })
   public phoneNumber!: string;
 
-  @Column('varchar', { unique: true, select: false })
+  @Column('varchar', { nullable: true, unique: true, select: false })
   public email!: string;
 
-  @Column('datetime', { select: false })
+  @Column('datetime', { nullable: true, select: false })
   public birth!: string;
 
-  @Column('tinyint', { width: 1, select: false })
+  @Column('tinyint', { nullable: true, width: 1, select: false })
   public gender!: number;
 
-  @Column('int', { select: false, comment: '마일리지 잔여금' })
+  @Column('int', {
+    nullable: false,
+    select: false,
+    comment: '마일리지 잔여금',
+    default: 0,
+  })
   public mileage!: number;
 
   @Column('tinyint', {
