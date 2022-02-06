@@ -20,6 +20,9 @@ export class HeaderImage {
   @Column('varchar', { nullable: false })
   url: string;
 
+  @Column('decimal', { name: 'position', precision: 6, scale: 5, default: 0 })
+  position: number;
+
   @ManyToOne(() => Product, (product) => product.headers)
   @JoinColumn({ name: 'productId', referencedColumnName: 'id' })
   product: Product;
