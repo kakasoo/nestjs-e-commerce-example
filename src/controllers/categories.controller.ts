@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CategoriesService } from '../providers/categories.service';
 import { Category } from '../models/tables/category';
@@ -7,6 +7,11 @@ import { Category } from '../models/tables/category';
 @Controller('api/categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
+
+  @Get(':id/products')
+  async getProductsBy(@Param('id', ParseIntPipe) categoryId: number) {
+    return await this.categoriesService.getProductsBy(categoryId);
+  }
 
   @ApiOperation({ summary: "생성된 '모든' 카테고리 조회" })
   @Get()
