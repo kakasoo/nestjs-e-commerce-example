@@ -3,25 +3,35 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from '../models/tables/category';
 import { Product } from '../models/tables/product';
 import { Repository } from 'typeorm';
+import { ProductHasCategory } from 'src/models/tables/productHasCategory';
+import { getOffset } from 'src/utils/getOffset';
 
 @Injectable()
 export class CategoriesService {
   constructor(
     @InjectRepository(Category)
     private readonly categoriesRepository: Repository<Category>,
+    @InjectRepository(ProductHasCategory)
+    private readonly productHasCategoriesRepository: Repository<ProductHasCategory>,
   ) {}
 
   async getAll(): Promise<Category[]> {
     return await this.categoriesRepository.find();
   }
 
-  async getProductsBy(categoryId: number): Promise<Product[]> {
-    const [category] = await this.categoriesRepository.find({
-      relations: ['products'],
-      where: { id: categoryId },
-      take: 1,
-    });
+  async getProductsBy(
+    categoryId: number,
+    page: number,
+  ): Promise<{ count: number; products: Product[] }> {
+    const [count, relations] = await Promise.all([
+      this.productHasCategoriesRepository.count({ where: { categoryId } }),
+      this.productHasCategoriesRepository.find({
+        relations: ['product'],
+        where: { id: categoryId },
+        ...getOffset(page),
+      }),
+    ]);
 
-    return category ? category.products : new Array<Product>();
+    return { count, products: relations.map((el) => el.product) };
   }
 }
