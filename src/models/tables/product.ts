@@ -58,12 +58,11 @@ export class Product extends TimeColumns {
   @OneToMany(() => BodyImage, (image) => image.product)
   bodies: BodyImage[];
 
+  @Column('tinyint', { width: 1, nullable: false, default: false })
+  public isSale!: boolean;
+
   @ManyToMany(() => Category, (category) => category.products)
-  @JoinTable({
-    name: 'product_has_categories',
-    joinColumn: { name: 'productId', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'categoryId', referencedColumnName: 'id' },
-  })
+  @JoinTable({ name: 'product_has_categories' })
   categories: Category[];
 
   @OneToMany(() => OptionGroup, (group) => group.product)

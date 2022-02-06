@@ -21,6 +21,9 @@ export class Option extends TimeColumns {
   @Column('varchar', { nullable: false, comment: '옵션 이름' })
   public title!: string;
 
+  @Column('tinyint', { width: 1, nullable: false, default: false })
+  public isSale!: boolean;
+
   @ManyToOne(() => OptionGroup, (group) => group.options)
   @JoinColumn({ name: 'groupId', referencedColumnName: 'id' })
   group: OptionGroup;
