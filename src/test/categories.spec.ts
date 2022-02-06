@@ -5,14 +5,11 @@ import { Category } from '../models/tables/category';
 import { TypeOrmModuleOptions } from '../config/typeorm';
 import { CategoriesController } from '../controllers/categories.controller';
 import { CategoriesService } from '../providers/categories.service';
-import { AuthModule } from '../auth/auth.module';
 import { CategoriesModule } from '../modules/categories.module';
-import { AuthService } from '../auth/auth.service';
 
 describe('Category Entity', () => {
   let controller: CategoriesController;
   let service: CategoriesService;
-  let authService: AuthService;
   let category;
 
   beforeAll(async () => {
@@ -22,7 +19,6 @@ describe('Category Entity', () => {
         TypeOrmModule.forFeature([Category]),
         ConfigModule.forRoot({ isGlobal: true }),
         CategoriesModule,
-        AuthModule,
       ],
       controllers: [],
       providers: [],
@@ -30,8 +26,6 @@ describe('Category Entity', () => {
 
     service = module.get<CategoriesService>(CategoriesService);
     controller = module.get<CategoriesController>(CategoriesController);
-
-    authService = module.get<AuthService>(AuthService);
   });
 
   describe('0. 테스트 환경을 확인합니다.', () => {
