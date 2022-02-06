@@ -17,9 +17,16 @@ email : kscodebase@gmail.com
    $ npm run schema:sync # 정의된 entity들을 즉시 생성합니다.
    ```
 
+   - 만약 잘못된 데이터가 있다면 일단 workbench로 삭제해주세요.
+   - 또는 schema:drop 후 schema:sync로 DB를 삭제, 재생성해주세요.
+
 4. 서버 실행 후 F.E. 에 자유롭게 연동
+
    ```bash
    $ npm run start:dev # 또는 npm run start
    ```
 
-추후 pm2나 swagger 문서 등을 다루는 법을 기재합니다.
+5. localhost:3000/api 경로에서 swagger 문서 확인 가능
+   - 해당 문서를 통해 경로, 기능, Request와 Response를 확인합니다.
+
+추후 pm2를 이용한 클러스터링을 설명하겠습니다.
