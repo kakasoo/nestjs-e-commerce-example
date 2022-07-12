@@ -5,8 +5,12 @@ import { User } from '../models/tables/user';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
-import { KakaoStrategy } from './strategies/kakao.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { CategoriesModule } from '@root/modules/categories.module';
+import { ProductsModule } from '@root/modules/products.module';
+import { SellersModule } from '@root/modules/sellers.module';
+import { UsersModule } from '@root/modules/users.module';
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [
@@ -22,8 +26,13 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       },
     }),
     TypeOrmModule.forFeature([User]),
+    UsersModule,
+    CategoriesModule,
+    SellersModule,
+    ProductsModule,
   ],
-  providers: [AuthService, KakaoStrategy, JwtStrategy],
+  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}

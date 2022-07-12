@@ -6,11 +6,7 @@ import { TimeoutInterceptor } from './common/interceptors/timout.interceptor';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmModuleOptions } from './config/typeorm';
-import { UsersModule } from './modules/users.module';
 import { AuthModule } from './auth/auth.module';
-import { CategoriesModule } from './modules/categories.module';
-import { SellersModule } from './modules/sellers.module';
-import { ProductsModule } from './modules/products.module';
 
 @Module({
   imports: [
@@ -18,10 +14,6 @@ import { ProductsModule } from './modules/products.module';
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot({ ttl: 60, limit: 10 }),
     AuthModule,
-    UsersModule,
-    CategoriesModule,
-    SellersModule,
-    ProductsModule,
   ],
   controllers: [],
   providers: [

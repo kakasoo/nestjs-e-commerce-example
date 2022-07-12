@@ -14,7 +14,7 @@ export class UsersService {
     return await this.usersRepository.save(dto);
   }
 
-  async findOne(condition: Partial<User>): Promise<User> {
+  async findOne(condition: any): Promise<User> {
     const [user] = await this.usersRepository.find({
       select: [
         'id',

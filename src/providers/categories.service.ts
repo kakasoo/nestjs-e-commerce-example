@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from '../models/tables/category';
 import { Product } from '../models/tables/product';
 import { Repository } from 'typeorm';
-import { ProductHasCategory } from 'src/models/tables/productHasCategory';
-import { getOffset } from 'src/utils/getOffset';
+import { ProductHasCategory } from '@root/models/tables/productHasCategory';
+import { getOffset } from '@root/utils/getOffset';
 
 @Injectable()
 export class CategoriesService {
@@ -26,8 +26,8 @@ export class CategoriesService {
     const [count, relations] = await Promise.all([
       this.productHasCategoriesRepository.count({ where: { categoryId } }),
       this.productHasCategoriesRepository.find({
-        relations: ['product'],
-        where: { id: categoryId },
+        relations: { product: true },
+        where: { categoryId },
         ...getOffset(page),
       }),
     ]);
