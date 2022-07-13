@@ -81,6 +81,7 @@
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.4"
   },
+  "types": "src/types/index.d.ts",
   "jest": {
     "moduleFileExtensions": [
       "js",
