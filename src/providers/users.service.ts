@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../models/tables/user';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from '../dtos/create-user.dto';
+import { CreateUserDto } from '../models/dtos/create-user.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -20,7 +20,19 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string) {
-    return await this.usersRepository.findOne({ where: { email } });
+    return await this.usersRepository.findOne({
+      select: {
+        id: true,
+        name: true,
+        nickname: true,
+        phoneNumber: true,
+        email: true,
+        password: true,
+        birth: true,
+        gender: true,
+      },
+      where: { email },
+    });
   }
 
   async findOne(userId: number): Promise<User> {

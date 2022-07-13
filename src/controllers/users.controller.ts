@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { User as UserEntity } from '../models/tables/user';
-import { CreateUserDto } from '../dtos/create-user.dto';
+import { CreateUserDto } from '../models/dtos/create-user.dto';
 import { UsersService } from '../providers/users.service';
 import { User } from '../common/decorators/user.decorator';
 import { JwtGuard } from '../auth/guards/jwt.guard';

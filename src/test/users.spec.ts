@@ -42,6 +42,30 @@ describe('User Entity', () => {
   });
 
   describe('1. 유저의 생성 로직을 검증합니다.', () => {
-    it('1-1. 유저를 생성하거나 조회합니다.', async () => {});
+    let user: User;
+
+    afterEach(async () => {
+      const searched = await User.findOne({ where: { id: user.id } });
+      if (searched) {
+        await User.remove(searched);
+      }
+    });
+
+    it('1-1. 유저를 생성하거나 조회합니다.', async () => {
+      user = await controller.signUp({
+        name: 'test',
+        nickname: 'test',
+        email: 'test',
+        password: 'test',
+        phoneNumber: 'test',
+        birth: new Date(1997, 10, 6),
+        gender: true,
+        smsAdsConsent: true,
+        emailAdsConsent: true,
+      });
+      console.log(user);
+
+      expect(user).toBeDefined();
+    });
   });
 });

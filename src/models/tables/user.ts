@@ -52,9 +52,9 @@ export class User extends TimeColumns {
   @IsDate()
   @Type(() => Date)
   @Column('datetime', { nullable: true, select: false })
-  public birth!: string;
+  public birth!: Date;
 
-  @ApiProperty({ description: '사용자의 성별' })
+  @ApiProperty({ description: '사용자의 성별로 true면 남자라고 가정한다.' })
   @IsOptionalBoolean()
   @Column({ nullable: true, width: 1, select: false })
   public gender!: boolean;

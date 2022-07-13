@@ -6,7 +6,7 @@
 import { AesPkcs5, Fetcher, Primitive } from 'nestia-fetcher';
 import type { IConnection } from 'nestia-fetcher';
 
-import type { CreateUserDto } from '../../../../dtos/create-user.dto';
+import type { CreateUserDto } from '../../../../models/dtos/create-user.dto';
 import type { User } from './../../../../models/tables/user';
 
 /**

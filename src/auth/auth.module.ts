@@ -11,6 +11,7 @@ import { ProductsModule } from '@root/modules/products.module';
 import { SellersModule } from '@root/modules/sellers.module';
 import { UsersModule } from '@root/modules/users.module';
 import { AuthController } from './auth.controller';
+import { LocalStrategy } from './strategies/local.strategy';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import { AuthController } from './auth.controller';
     ProductsModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, LocalStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
