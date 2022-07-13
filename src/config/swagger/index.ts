@@ -7,6 +7,7 @@ export const SwaggerSetting = (app: INestApplication) => {
     .setDescription('The API description')
     .setVersion('1.0')
     .addTag('kakasoo')
+    .addBearerAuth({ type: 'http', scheme: 'bearer', in: 'header' }, 'Bearer')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

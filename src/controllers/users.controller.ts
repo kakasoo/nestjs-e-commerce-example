@@ -4,7 +4,7 @@ import { CreateUserDto } from '../models/dtos/create-user.dto';
 import { UsersService } from '../providers/users.service';
 import { User } from '../common/decorators/user.decorator';
 import { JwtGuard } from '../auth/guards/jwt.guard';
-import { ApiHeader, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('유저 / User')
 @Controller('api/users')
@@ -18,7 +18,7 @@ export class UsersController {
   }
 
   @ApiOperation({ summary: 'MVP : 유저 프로필 조회 & 토큰에 담긴 값 Parsing.' })
-  @ApiHeader({ name: 'token' })
+  @ApiBearerAuth('Bearer')
   @UseGuards(JwtGuard)
   @Get('profile')
   async getProfile(@User() user: UserEntity) {
