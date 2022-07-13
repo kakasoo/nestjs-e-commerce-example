@@ -19,12 +19,13 @@ export const TypeOrmModuleOptions = {
         path.join(__dirname, '../../models/tables/*.js'),
       ],
       synchronize: true,
-
+      socketPath: '/tmp/mysql.sock',
       ...(NODE_ENV === 'DEVELOPMENT'
-        ? { retryAttempts: 2, logging: true }
+        ? { retryAttempts: 10, logging: true }
         : { logging: false }),
     };
 
+    console.log(option);
     return option;
   },
 };

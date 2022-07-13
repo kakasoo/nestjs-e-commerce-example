@@ -3,18 +3,51 @@
     <script>
       window.onload = () => {
         document.getElementById('loginButton').addEventListener('click', () => {
-          const email = document.getElementById('email').nodeValue;
-          const password = document.getElementById('password').nodeValue;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
 
-          fetch('http://localhost/auth/login', {
+          fetch('http://127.0.0.1:3000/api/auth/login', {
             method: 'POST',
-            data: JSON.stringify({ email, password }),
+            body: JSON.stringify({
+              email: 'string',
+              password: 'string',
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
           })
-            .then((res) => res.json)
+            .then((res) => res.json())
             .then((res) => {
-              console.log(res);
+              console.log('res : ', res);
+            })
+            .catch((err) => {
+              console.log('err : ', err);
             });
         });
+
+        // async function login() {
+        //   try {
+        //     const response = await fetch(
+        //       'http://127.0.0.1:3000/api/auth/login',
+        //       {
+        //         method: 'POST',
+        //         headers: {
+        //           accept: '*/*',
+        //           'Content-Type': 'application/json',
+        //         },
+        //         data: JSON.stringify({
+        //           email: 'string',
+        //           password: 'string',
+        //         }),
+        //       },
+        //     );
+        //     const data = await response.json();
+        //     console.log(data);
+        //   } catch (err) {
+        //     console.log('err : ', err.message);
+        //   }
+        // }
+        // login();
       };
     </script>
   </head>
