@@ -4,12 +4,12 @@ import { LoginUserDto } from '@root/models/dtos/login-user.dto';
 import { LocalGuard } from './guards/local.guard';
 
 @ApiTags('권한 / Auth')
-@Controller()
+@Controller('api/auth')
 export class AuthController {
   @ApiOperation({ summary: '이메일과 패스워드를 이용한 로그인' })
   @ApiBody({ type: LoginUserDto })
   @UseGuards(LocalGuard)
-  @Post('auth/login')
+  @Post('login')
   async login(@Request() req) {
     return req.user;
   }

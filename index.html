@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script>
+      window.onload = () => {
+        document.getElementById('loginButton').addEventListener('click', () => {
+          const email = document.getElementById('email').nodeValue;
+          const password = document.getElementById('password').nodeValue;
+
+          fetch('http://localhost/auth/login', {
+            method: 'POST',
+            data: JSON.stringify({ email, password }),
+          })
+            .then((res) => res.json)
+            .then((res) => {
+              console.log(res);
+            });
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <input id="email" type="text" placeholder="email" />
+    <input id="password" type="text" placeholder="password" />
+    <button id="loginButton">login</button>
+  </body>
+</html>
