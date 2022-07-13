@@ -13,8 +13,8 @@ export class User extends TimeColumns {
   @PrimaryGeneratedColumn()
   public readonly id!: number;
 
-  @Column('varchar', { nullable: false, unique: true, select: false })
-  public oauthId!: string;
+  // @Column('varchar', { nullable: false, unique: true, select: false })
+  // public oauthId!: string;
 
   @Column('varchar', { nullable: false, select: false })
   public name!: string;
@@ -30,6 +30,9 @@ export class User extends TimeColumns {
 
   @Column('varchar', { nullable: true, unique: true, select: false })
   public email!: string;
+
+  @Column({ select: false })
+  password: string;
 
   @Column('datetime', { nullable: true, select: false })
   public birth!: string;

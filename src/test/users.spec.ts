@@ -35,20 +35,13 @@ describe('User Entity', () => {
   });
 
   describe('0. 테스트 환경을 확인합니다.', () => {
-    it.only('0-1. Service와 Controller 가 정의되어야 합니다.', async () => {
+    it('0-1. Service와 Controller 가 정의되어야 합니다.', async () => {
       expect(controller).toBeDefined();
       expect(service).toBeDefined();
     });
   });
 
   describe('1. 유저의 생성 로직을 검증합니다.', () => {
-    it.only('1-1. 유저를 생성하거나 조회합니다.', async () => {
-      const userToCreate = { oauthId: 'test', name: 'test', nickname: 'test' };
-      user = await service.findOne(userToCreate);
-      if (!user) {
-        user = await service.create(userToCreate);
-      }
-      expect(user).toBeDefined();
-    });
+    it('1-1. 유저를 생성하거나 조회합니다.', async () => {});
   });
 });

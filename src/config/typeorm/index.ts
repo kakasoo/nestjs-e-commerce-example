@@ -7,7 +7,7 @@ export const TypeOrmModuleOptions = {
   useFactory: async (configService: ConfigService) => {
     const NODE_ENV = configService.get('NODE_ENV');
 
-    return {
+    const option = {
       type: configService.get('DB_TYPE'),
       host: configService.get(`${NODE_ENV}_DB_HOST`),
       port: Number(configService.get<number>(`${NODE_ENV}_DB_PORT`)),
@@ -18,11 +18,13 @@ export const TypeOrmModuleOptions = {
         path.join(__dirname, '../../models/tables/*.ts'),
         path.join(__dirname, '../../models/tables/*.js'),
       ],
-      synchronize: false,
+      synchronize: true,
 
       ...(NODE_ENV === 'DEVELOPMENT'
         ? { retryAttempts: 2, logging: true }
         : { logging: false }),
     };
+
+    return option;
   },
 };

@@ -9,7 +9,7 @@ email : kscodebase@gmail.com
 # How to use?
 
 1. MySQL 설치
-2. .env에 각종 값들을 모두 기입
+2. .env에 각종 값들을 모두 기입 ( 기입 후에는 .env.example 파일 이름을 .env로 고쳐주세요. )
 3. 아래 명령어로 tables를 MySQL 상에 synchronize.
 
    ```bash

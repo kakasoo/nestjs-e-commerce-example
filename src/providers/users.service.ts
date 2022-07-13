@@ -14,24 +14,11 @@ export class UsersService {
     return await this.usersRepository.save(dto);
   }
 
-  async findOne(condition: any): Promise<User> {
-    const [user] = await this.usersRepository.find({
-      select: [
-        'id',
-        'name',
-        'nickname',
-        'profileImage',
-        'email',
-        'birth',
-        'gender',
-        'mileage',
-        'smsAdsConsent',
-        'emailAdsConsent',
-        'createdAt',
-      ],
-      where: condition,
-      take: 1,
-    });
-    return user;
+  async findOneByEmail(email: string) {
+    return await this.usersRepository.findOne({ where: { email } });
+  }
+
+  async findOne(userId: number): Promise<User> {
+    return await this.usersRepository.findOne({ where: { id: userId } });
   }
 }

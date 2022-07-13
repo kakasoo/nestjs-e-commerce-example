@@ -13,8 +13,8 @@ export class UsersController {
 
   @ApiOperation({ summary: 'MVP : Local 로그인을 위한 User 생성' })
   @Post('sign-up')
-  async signUp(@Body() dto: CreateUserDto): Promise<UserEntity> {
-    return await this.usersService.create(dto);
+  async signUp(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
+    return await this.usersService.create(createUserDto);
   }
 
   @ApiOperation({ summary: 'MVP : 유저 프로필 조회 & 토큰에 담긴 값 Parsing.' })
