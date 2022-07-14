@@ -9,8 +9,8 @@
           fetch('http://127.0.0.1:3000/api/auth/login', {
             method: 'POST',
             body: JSON.stringify({
-              email: 'string',
-              password: 'string',
+              email: email,
+              password: password,
             }),
             headers: {
               'Content-Type': 'application/json',
