@@ -1,3 +1,6 @@
+만약 커머스가 아니라 NestJS에 대한 예제가 필요하다면 아래를 참고하세요.   
+https://github.com/picktogram/server
+
 # nestjs-e-commerce
 
 e-commerce 프로젝트를 진행하기 위한 B.E. 설정 및 기본 코드를 구현합니다.  
